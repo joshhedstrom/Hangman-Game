@@ -10,14 +10,26 @@
 
     document.getElementById("start").addEventListener("click", function() {
 
-        document.getElementById("word").innerHTML = answerArray
 
         console.log(lettersLeft);
 
         while (lettersLeft > 0) {
-            let guess = prompt("pick a letter, any letter")
+            document.getElementById("word").innerHTML = answerArray.join(" ");
+            let guess = prompt("pick a letter, any letter. or cancel to end")
+            if (guess === null) {
+                break;
+            } else if (guess.length !== 1) {
+                alert("one letter at a time, please.")
 
-            document.getElementById("usedLetters").innerHTML = guess;
+            } else {
+                for (let j = 0; j < randomWord.length; j++) {
+                    if (randomWord[j] === guess) {
+                        answerArray[j] = guess
+                        lettersLeft--;
+                    }
+                }
+            }
+
             break;
 
         }
