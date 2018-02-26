@@ -53,6 +53,9 @@
 
             }
 
-            // alert("nice! the word was: " + randomWord)
+    if (lettersLeft === 0) {
+            alert("nice! the word was: " + randomWord)
+    	
+    }
         });
     });
