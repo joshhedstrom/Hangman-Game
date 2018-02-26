@@ -54,8 +54,13 @@
             }
 
     if (lettersLeft === 0) {
-            alert("nice! the word was: " + randomWord)
-    	
+    	let restart = confirm("nice! the word was: " + randomWord + ".\n play again?")
+    	 if (restart === true) {
+    	 	// statement
+    	 } else {
+    	 	alert("thanks for playing!")
+    	 }
+
     }
         });
     });
