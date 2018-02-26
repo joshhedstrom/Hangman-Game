@@ -32,8 +32,8 @@ function gameLoop() {
 
     }
 }
-    document.getElementById("start").addEventListener("click", function gameLoop(){});
-    document.getElementById("guessAgain").addEventListener("click", function gameLoop(){});
+    document.getElementById("start").onclick = gameLoop;
+    document.getElementById("guessAgain").onclick = gameLoop;
 
     //     document.getElementById("word").innerHTML = answerArray.join(" ");
     //     if (lettersLeft > 0) {
