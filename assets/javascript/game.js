@@ -9,6 +9,10 @@
 
     console.log(randomWord)
 
+    function showGame() {
+        document.getElementById('gameElement').style.display = "block";
+    }
+
 
     function gameLoop() {
         document.getElementById("word").innerHTML = answerArray.join(" ");
@@ -41,5 +45,5 @@
 
         }
     }
-    document.getElementById("start").onclick = gameLoop;
+    document.getElementById("start").onclick = showGame;
     document.getElementById("guessAgain").onclick = gameLoop;
