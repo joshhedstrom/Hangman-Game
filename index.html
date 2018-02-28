@@ -1,17 +1,17 @@
-<!doctype <html></html>
+<!doctype html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>hangman</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- https://bootswatch.com/slate/ -->
-	<link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.min.css">
-</head>
-<body>
-	<div class="container">
-		<div class="jumbotron col-12 col-sm-12 col-md-12">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>hangman</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- https://bootswatch.com/slate/ -->
+		<link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.min.css">
+	</head>
+	<body class="container">
+		<div cllass="container">
+		<div class=" col-12 col-sm-12 col-md-12">
 			<h1 class="display-3">ready to play hangman?<h1>
 			<p class="lead">a simple hangman-ish game. press to start</p>
 			<hr class="my-4">
@@ -20,30 +20,39 @@
 				<a class="btn btn-primary btn-lg" href="#" id="start" role="button">start</a>
 			</p>
 		</div>
-		<div id="gameElement" class="align-items-center center-block mx-auto" style="display: none;">
+		<div id="gameElement" class="align-items-center center-block mx-" style="display: none;">
 			<div class="row">
 				<div class="col-md-3"></div>
 				<div class="container col-12 col-sm-12 col-md-6">
-					<h3 class="">the word:</h3>
-					<p class="" id="word"></p>
-					<br>
-					<!-- <div class="form-group">
-									<label class="col-form-label" for="inputDefault">choose your letter</label>
-									<input type="text" class="form-control" placeholder="type your guess" id="guessLetter">
+					<div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+						<div class="card-header">the word:</div>
+						<div class="card-body">
+							<p class="card-text" id="word"></p>
+						</div>
 					</div>
-					-->				
+					
+					<br>
 					<button type="button" class="btn btn-primary pull-6" id="guessAgain">guess a letter</button>
 					<br>
-					<h3 class="card-header">letters used:</h3>
-					<p  class="card-body" id="lettersUsed"></p>
+					<div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+						<div class="card-header">letters used</div>
+						<div class="card-body">
+							<p class="card-text" id="lettersUsed"></p>
+						</div>
+					</div>
 					<br>
-					<h3 class="">letters left:</h3>
-					<p class="" id="lettersLeft"></p>
+					<div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+						<div class="card-header">letters left:</div>
+						<div class="card-body">
+							<p class="card-text" id="lettersLeft"></p>
+						</div>
+					</div>
+					
 					<br>
 				</div>
 			</div>
 		</div>
-	</div>
-	<script src="./assets/javascript/game.js"></script>
-</body>
+		</div>
+		<script src="./assets/javascript/game.js"></script>
+	</body>
 </html>
