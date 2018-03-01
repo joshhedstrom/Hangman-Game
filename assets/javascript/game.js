@@ -1,23 +1,27 @@
-    const randomWordArr = ["pizza", "dirt", "book", "picture", "guitar", "couch", "blanket", "flower", "table", "computer"];
-    let randomWord = randomWordArr[Math.floor(Math.random() * randomWordArr.length)];
-    let lettersLeft = randomWord.length;
-    let answerArray = [];
-    for (let i = 0; i < randomWord.length; i++) {
-        answerArray[i] = " _ ";
-    }
-    let usedArray = [];
+const randomWordArr = ["pizza", "dirt", "book", "picture", "guitar", "couch", "blanket", "flower", "table", "computer"];
+let randomWord = randomWordArr[Math.floor(Math.random() * randomWordArr.length)];
+let lettersLeft = randomWord.length;
+let answerArray = [];
+for (let i = 0; i < randomWord.length; i++) {
+    answerArray[i] = " _ ";
+}
+let usedArray = [];
 
-    console.log(randomWord)
+console.log(randomWord)
 
-    function showGame() {
-        document.getElementById('gameElement').style.display = "block";
-    }
+function showGame() {
+    document.getElementById('gameElement').style.display = "block";
+}
 
+document.onkeyup = function(argument) {
+    gameLoop()
+}
 
-    function gameLoop() {
-        document.getElementById("word").innerHTML = answerArray.join(" ");
-        if (lettersLeft > 0) {
-            let guess = prompt("pick a letter, any letter")
+function gameLoop() {
+    document.getElementById("word").innerHTML = answerArray.join(" ");
+    if (lettersLeft > 0) {
+        document.onkeyup = function(event) {
+            var guess = event.key;
             usedArray.push(guess)
             document.getElementById("lettersUsed").innerHTML = usedArray;
             if (guess.length !== 1) {
@@ -45,5 +49,8 @@
 
         }
     }
-    document.getElementById("start").onclick = showGame;
-    document.getElementById("guessAgain").onclick = gameLoop;
+}
+document.getElementById("start").onclick = function(argument) {
+    showGame()
+    gameLoop()
+}

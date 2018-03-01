@@ -11,47 +11,48 @@
 	</head>
 	<body class="container">
 		<div cllass="container">
-		<div class=" col-12 col-sm-12 col-md-12">
-			<h1 class="display-3">ready to play hangman?<h1>
-			<p class="lead">a simple hangman-ish game. press to start</p>
-			<hr class="my-4">
-			<p></p>
-			<p class="lead">
-				<a class="btn btn-primary btn-lg" href="#" id="start" role="button">start</a>
-			</p>
-		</div>
-		<div id="gameElement" class="align-items-center center-block mx-" style="display: none;">
-			<div class="row">
-				<div class="col-md-3"></div>
-				<div class="container col-12 col-sm-12 col-md-6">
-					<div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-						<div class="card-header">the word:</div>
-						<div class="card-body">
-							<p class="card-text" id="word"></p>
+			<div class=" col-12 col-sm-12 col-md-12">
+				<h1 class="display-3">ready to play hangman?<h1>
+				<p class="lead">a simple hangman-ish game. press to start</p>
+				<hr class="my-4">
+				<p></p>
+				<p class="lead">
+					<a class="btn btn-primary btn-lg" href="#" id="start" role="button">start</a>
+				</p>
+			</div>
+			<div id="gameElement" class="align-items-center center-block" style="display: none;">
+				<div class="row">
+					<!-- <div class="col-md-3"></div> -->
+					<div class="container col-12 col-sm-12 col-md-6 mx-auto">
+						<div class="card text-white bg-primary mb-3">
+							<div class="card-header text-center">the word</div>
+							<div class="card-body">
+								<p class="card-text text-center" id="word"></p>
+							</div>
 						</div>
-					</div>
-					
-					<br>
-					<button type="button" class="btn btn-primary pull-6" id="guessAgain">guess a letter</button>
-					<br>
-					<div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-						<div class="card-header">letters used</div>
-						<div class="card-body">
-							<p class="card-text" id="lettersUsed"></p>
+						
+						<!-- <br>
+						<div class="align-items-center align-content-center">
+							<button type="button" class="btn btn-primary btn-lg btn-block" id="guessAgain">guess a letter</button>
+						</div> -->
+						<br>
+						<div class="card text-white bg-primary mb-3">
+							<div class="card-header text-center">letters used</div>
+							<div class="card-body">
+								<p class="card-text text-center" id="lettersUsed"></p>
+							</div>
 						</div>
-					</div>
-					<br>
-					<div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-						<div class="card-header">letters left:</div>
-						<div class="card-body">
-							<p class="card-text" id="lettersLeft"></p>
+						<br>
+						<div class="card text-white bg-primary mb-3">
+							<div class="card-header text-center">letters left</div>
+							<div class="card-body">
+								<p class="card-text  text-center" id="lettersLeft"></p>
+							</div>
 						</div>
+						<br>
 					</div>
-					
-					<br>
 				</div>
 			</div>
-		</div>
 		</div>
 		<script src="./assets/javascript/game.js"></script>
 	</body>
