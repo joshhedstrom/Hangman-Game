@@ -13,10 +13,6 @@ function showGame() {
     document.getElementById('gameElement').style.display = "block";
 }
 
-document.onkeyup = function(argument) {
-    gameLoop()
-}
-
 function gameLoop() {
     document.getElementById("word").innerHTML = answerArray.join(" ");
     if (lettersLeft > 0) {
@@ -38,15 +34,15 @@ function gameLoop() {
                 }
             }
 
-        }
-        if (lettersLeft === 0) {
-            let restart = confirm("nice! the word was: " + randomWord + ".\n play again?")
-            if (restart === true) {
-                location.reload(true)
-            } else {
-                alert("thanks for playing!")
-            }
+            if (lettersLeft === 0) {
+                let restart = confirm("nice! the word was: " + randomWord + ".\n play again?")
+                if (restart === true) {
+                    location.reload(true)
+                } else {
+                    alert("thanks for playing!")
+                }
 
+            }
         }
     }
 }

@@ -9,21 +9,24 @@
 		<!-- https://bootswatch.com/slate/ -->
 		<link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.min.css">
 	</head>
-	<body class="container">
-		<div cllass="container">
-			<div class=" col-12 col-sm-12 col-md-12">
-				<h1 class="display-3">ready to play hangman?<h1>
-				<p class="lead">a simple hangman-ish game. press to start</p>
+	<body class="container" style="background-image: url(./assets/images/hangman3.jpg); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
+		<div class="container">
+			<div class="col-12 col-sm-12 col-md-12">
+				<h1 class="display-3 text-white text-"><strong>ready to play hangman?</strong><h1>
+				<p class="lead text-white">a simple hangman-ish game. press to start</p>
 				<hr class="my-4">
 				<p></p>
 				<p class="lead">
 					<a class="btn btn-primary btn-lg" href="#" id="start" role="button">start</a>
 				</p>
+				<!-- <img class="img-thumbnail " src= "./assets/images/hangman.jpg"></img> -->
 			</div>
 			<div id="gameElement" class="align-items-center center-block" style="display: none;">
 				<div class="row">
 					<!-- <div class="col-md-3"></div> -->
 					<div class="container col-12 col-sm-12 col-md-6 mx-auto">
+						<p class="card-header text-white">just start typing to start guessing</p>
+						<br>
 						<div class="card text-white bg-primary mb-3">
 							<div class="card-header text-center">the word</div>
 							<div class="card-body">
