@@ -2,8 +2,8 @@ const randomWordArr1 = ["harmonica", "flute", "cello", "violin", "guitar", "bass
 const randomWordArr2 = ["kale", "carrot", "celery", "lettuce", "cabbage", "pea", "spinach", "broccoli", "radish", "cucumber", "tomato", "eggplant", "turnip", "squash", "pumpkin"]
 const randomWordArr3 = ["apple", "orange", "kiwi", "mango", "pineapple", "pear", "lemon", "banana", "peach", "cherry", "apricot", "watermelon", "strawberry", "blueberry", "grape"]
 const randomWordArr4 = ["sparrow", "woodpecker", "finch", "crow", "owl", "robin", "cardinal", "goldfinch", "pigeon", "hawk", "eagle", "hummingbird", "starling", "chickadee", "seagull"]
-const randomWordArr5 = ["rose", "dandelion", "daffodl", "crocus", "peony" "violet", "tulip", "orchid", "buttercup", "lavender", "poppy", "pansy", "marigold", "lilac"]
-const randomWordArr6 = ["jazz", "crypt", "blizzard", "equip", "galaxy", "zipper", "vortex", "subway", "whiskey", "wellspring", "kazoo", "luxury", "knapsack", "kiosk", "oxygen", "microwave", "quiz", "pixel" "fluff"]
+const randomWordArr5 = ["rose", "dandelion", "daffodil", "crocus", "peony", "violet", "tulip", "orchid", "buttercup", "lavender", "poppy", "pansy", "marigold", "lilac"]
+const randomWordArr6 = ["jazz", "crypt", "blizzard", "equip", "galaxy", "zipper", "vortex", "subway", "whiskey", "wellspring", "kazoo", "luxury", "knapsack", "kiosk", "oxygen", "microwave", "quiz", "pixel", "fluff"]
 
 function showGame() {
     document.getElementById('gameElement').style.display = "block";
@@ -64,6 +64,15 @@ document.getElementById("fruits").onclick = function() {
     showGame();
     gameLoop(randomWordArr3);
 }
-// document.getElementById("instruments").onclick = gameLoop(randomWordArr1);
-// document.getElementById("vegetables").onclick = gameLoop(randomWordArr2);
-// document.getElementById("fruits").onclick = gameLoop(randomWordArr3);
+document.getElementById("birds").onclick = function() {
+    showGame();
+    gameLoop(randomWordArr4);
+}
+document.getElementById("flowers").onclick = function() {
+    showGame();
+    gameLoop(randomWordArr5);
+}
+document.getElementById("hard").onclick = function() {
+    showGame();
+    gameLoop(randomWordArr6);
+}
