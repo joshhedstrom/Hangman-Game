@@ -4,50 +4,73 @@ const randomWordArr3 = ["apple", "orange", "kiwi", "mango", "pineapple", "pear",
 const randomWordArr4 = ["sparrow", "woodpecker", "finch", "crow", "owl", "robin", "cardinal", "goldfinch", "pigeon", "hawk", "eagle", "hummingbird", "starling", "chickadee", "seagull"]
 const randomWordArr5 = ["rose", "dandelion", "daffodil", "crocus", "peony", "violet", "tulip", "orchid", "buttercup", "lavender", "poppy", "pansy", "marigold", "lilac"]
 const randomWordArr6 = ["jazz", "crypt", "blizzard", "equip", "galaxy", "zipper", "vortex", "subway", "whiskey", "wellspring", "kazoo", "luxury", "knapsack", "kiosk", "oxygen", "microwave", "quiz", "pixel", "fluff"]
+let loss = 0;
+let win = 0;
 
 function showGame() {
     document.getElementById('gameElement').style.display = "block";
-    // $('html,body').animate({scrollTop: document.body.scrollHeight},"fast");
+    $('html,body').animate({
+        scrollTop: document.body.scrollHeight
+    }, "fast");
+}
+
+function newGame() {
+    document.getElementById('gameElement').style.display = "none";
+
 }
 
 function gameLoop(arr) {
+    let guessesLeft = 10;
+    let usedArray = [];
+    document.getElementById("guessesLeft").innerHTML = guessesLeft;
+    document.getElementById("lettersUsed").innerHTML = usedArray;
     let randomWord = arr[Math.floor(Math.random() * arr.length)];
     let lettersLeft = randomWord.length;
     let answerArray = [];
     for (let i = 0; i < randomWord.length; i++) {
         answerArray[i] = " _ ";
     }
-    let usedArray = [];
-
     document.getElementById("word").innerHTML = answerArray.join(" ");
     console.log(randomWord)
     if (lettersLeft > 0) {
-        document.onkeyup = function(event) {
+        document.onkeyup = function() {
             var guess = event.key;
-            usedArray.push(guess)
-            document.getElementById("lettersUsed").innerHTML = usedArray;
-            if (guess.length !== 1) {
-                alert("one letter at a time, please.")
-
-            } else {
-                for (let j = 0; j < randomWord.length; j++) {
-                    if (randomWord[j] === guess) {
-                        answerArray[j] = guess
-                        lettersLeft--;
-                        document.getElementById("word").innerHTML = answerArray.join(" ");
-                        document.getElementById("lettersLeft").innerHTML = lettersLeft;
+            var used = usedArray.includes(guess);
+            if (!used) {
+                usedArray.push(guess)
+                document.getElementById("lettersUsed").innerHTML = usedArray;
+                if (guess.length !== 1) {
+                    alert("one letter at a time, please.")
+                } else {
+                    var match;
+                    for (let j = 0; j < randomWord.length; j++) {
+                        if (randomWord[j] === guess) {
+                            answerArray[j] = guess;
+                            document.getElementById("word").innerHTML = answerArray.join(" ");
+                            lettersLeft--;
+                            console.log(answerArray.length);
+                            match = true;
+                        }
+                    }
+                    if (!match) {
+                        guessesLeft--;
                     }
                 }
-            }
-
-            if (lettersLeft === 0) {
-                let restart = confirm("nice! the word was: " + randomWord + ".\n play again?")
-                if (restart === true) {
-                    location.reload(true)
-                } else {
-                    alert("thanks for playing!")
+                document.getElementById("guessesLeft").innerHTML = guessesLeft;
+                if (guessesLeft === 0) {
+                    let restart = confirm("so close, and yet so far away...")
+                    loss++;
+                    newGame()
                 }
-
+                if (lettersLeft === 0) {
+                    alert("sweet! the word was " + randomWord)
+                    win++;
+                    newGame()
+                }
+                document.getElementById("win").innerHTML = "wins: " + win;
+                document.getElementById("loss").innerHTML = "losses: " + loss;
+            } else {
+                alert("you already tried that letter")
             }
         }
     }
