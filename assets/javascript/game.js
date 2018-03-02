@@ -11,6 +11,7 @@ console.log(randomWord)
 
 function showGame() {
     document.getElementById('gameElement').style.display = "block";
+    $('html,body').animate({scrollTop: document.body.scrollHeight},"fast");
 }
 
 function gameLoop() {

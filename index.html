@@ -8,55 +8,59 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- https://bootswatch.com/slate/ -->
 		<link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.min.css">
+		<script
+		src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
 	</head>
 	<body class="container" style="background-image: url(./assets/images/hangman3.jpg); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
 		<div class="container">
 			<div class="col-12 col-sm-12 col-md-12">
-				<h1 class="display-3 text-white text-"><strong>ready to play hangman?</strong><h1>
-				<p class="lead text-white">a simple hangman-ish game. press to start</p>
-				<hr class="my-4">
-				<p></p>
-				<p class="lead">
-					<a class="btn btn-primary btn-lg" href="#" id="start" role="button">start</a>
-				</p>
-				<!-- <img class="img-thumbnail " src= "./assets/images/hangman.jpg"></img> -->
-			</div>
-			<div id="gameElement" class="align-items-center center-block" style="display: none;">
-				<div class="row">
-					<!-- <div class="col-md-3"></div> -->
-					<div class="container col-12 col-sm-12 col-md-6 mx-auto">
-						<p class="card-header text-white">just start typing to start guessing</p>
-						<br>
-						<div class="card text-white bg-primary mb-3">
-							<div class="card-header text-center">the word</div>
-							<div class="card-body">
-								<p class="card-text text-center" id="word"></p>
-							</div>
+				<div class="jumbotron" style="opacity: 0.7">
+					<h1 class="display-3 text-white"><strong>ready to play hangman?</strong><h1> <br>
+					<p class="lead text-white"><strong>a simple hangman-ish game. press to start</strong></p>
+					<hr class="my-4">
+				</div>
+				<a class="btn btn-primary btn-lg" href="#" id="start" role="button">start</a>
+			</p>
+			<!-- <img class="img-thumbnail " src= "./assets/images/hangman.jpg"></img> -->
+		</div>
+		<div id="gameElement" class="align-items-center center-block" style="display: none;">
+			<div class="row">
+				<!-- <div class="col-md-3"></div> -->
+				<div class="container col-12 col-sm-12 col-md-6 mx-auto">
+					<p class="card-header text-white lead" style="opacity: 0.7">start typing to start guessing</p>
+					<br>
+					<div class="card text-white bg-primary mb-3" style="opacity: 0.7">
+						<div class="card-header text-center">the word</div>
+						<div class="card-body">
+							<p class="card-text text-center" id="word"></p>
 						</div>
-						
-						<!-- <br>
-						<div class="align-items-center align-content-center">
-							<button type="button" class="btn btn-primary btn-lg btn-block" id="guessAgain">guess a letter</button>
-						</div> -->
-						<br>
-						<div class="card text-white bg-primary mb-3">
-							<div class="card-header text-center">letters used</div>
-							<div class="card-body">
-								<p class="card-text text-center" id="lettersUsed"></p>
-							</div>
-						</div>
-						<br>
-						<div class="card text-white bg-primary mb-3">
-							<div class="card-header text-center">letters left</div>
-							<div class="card-body">
-								<p class="card-text  text-center" id="lettersLeft"></p>
-							</div>
-						</div>
-						<br>
 					</div>
+					
+					<!-- <br>
+					<div class="align-items-center align-content-center">
+								<button type="button" class="btn btn-primary btn-lg btn-block" id="guessAgain">guess a letter</button>
+					</div> -->
+					<br>
+					<div class="card text-white bg-primary mb-3" style="opacity: 0.7">
+						<div class="card-header text-center">letters used</div>
+						<div class="card-body">
+							<p class="card-text text-center" id="lettersUsed"></p>
+						</div>
+					</div>
+					<br>
+					<div class="card text-white bg-primary mb-3" style="opacity: 0.7">
+						<div class="card-header text-center">letters left</div>
+						<div class="card-body">
+							<p class="card-text  text-center" id="lettersLeft"></p>
+						</div>
+					</div>
+					<br>
 				</div>
 			</div>
 		</div>
-		<script src="./assets/javascript/game.js"></script>
-	</body>
+	</div>
+	<script src="./assets/javascript/game.js"></script>
+</body>
 </html>
