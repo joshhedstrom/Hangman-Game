@@ -1,21 +1,26 @@
-const randomWordArr = ["pizza", "dirt", "book", "picture", "guitar", "couch", "blanket", "flower", "table", "computer"];
-let randomWord = randomWordArr[Math.floor(Math.random() * randomWordArr.length)];
-let lettersLeft = randomWord.length;
-let answerArray = [];
-for (let i = 0; i < randomWord.length; i++) {
-    answerArray[i] = " _ ";
-}
-let usedArray = [];
-
-console.log(randomWord)
+const randomWordArr1 = ["harmonica", "flute", "cello", "violin", "guitar", "bass", "piano", "organ", "ukulele", "trumpet", "viola", "clarinet", "harp", "banjo", "mandolin", "marimba"];
+const randomWordArr2 = ["kale", "carrot", "celery", "lettuce", "cabbage", "pea", "spinach", "broccoli", "radish", "cucumber", "tomato", "eggplant", "turnip", "squash", "pumpkin"]
+const randomWordArr3 = ["apple", "orange", "kiwi", "mango", "pineapple", "pear", "lemon", "banana", "peach", "cherry", "apricot", "watermelon", "strawberry", "blueberry", "grape"]
+const randomWordArr4 = ["sparrow", "woodpecker", "finch", "crow", "owl", "robin", "cardinal", "goldfinch", "pigeon", "hawk", "eagle", "hummingbird", "starling", "chickadee", "seagull"]
+const randomWordArr5 = ["rose", "dandelion", "daffodl", "crocus", "peony" "violet", "tulip", "orchid", "buttercup", "lavender", "poppy", "pansy", "marigold", "lilac"]
+const randomWordArr6 = ["jazz", "crypt", "blizzard", "equip", "galaxy", "zipper", "vortex", "subway", "whiskey", "wellspring", "kazoo", "luxury", "knapsack", "kiosk", "oxygen", "microwave", "quiz", "pixel" "fluff"]
 
 function showGame() {
     document.getElementById('gameElement').style.display = "block";
-    $('html,body').animate({scrollTop: document.body.scrollHeight},"fast");
+    // $('html,body').animate({scrollTop: document.body.scrollHeight},"fast");
 }
 
-function gameLoop() {
+function gameLoop(arr) {
+    let randomWord = arr[Math.floor(Math.random() * arr.length)];
+    let lettersLeft = randomWord.length;
+    let answerArray = [];
+    for (let i = 0; i < randomWord.length; i++) {
+        answerArray[i] = " _ ";
+    }
+    let usedArray = [];
+
     document.getElementById("word").innerHTML = answerArray.join(" ");
+    console.log(randomWord)
     if (lettersLeft > 0) {
         document.onkeyup = function(event) {
             var guess = event.key;
@@ -47,7 +52,18 @@ function gameLoop() {
         }
     }
 }
-document.getElementById("start").onclick = function(argument) {
-    showGame()
-    gameLoop()
+document.getElementById("instruments").onclick = function() {
+    showGame();
+    gameLoop(randomWordArr1);
 }
+document.getElementById("vegetables").onclick = function() {
+    showGame();
+    gameLoop(randomWordArr2);
+}
+document.getElementById("fruits").onclick = function() {
+    showGame();
+    gameLoop(randomWordArr3);
+}
+// document.getElementById("instruments").onclick = gameLoop(randomWordArr1);
+// document.getElementById("vegetables").onclick = gameLoop(randomWordArr2);
+// document.getElementById("fruits").onclick = gameLoop(randomWordArr3);
