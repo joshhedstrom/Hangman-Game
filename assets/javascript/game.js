@@ -48,7 +48,6 @@ function gameLoop(arr) {
                             answerArray[j] = guess;
                             document.getElementById("word").innerHTML = answerArray.join(" ");
                             lettersLeft--;
-                            console.log(answerArray.length);
                             match = true;
                         }
                     }
