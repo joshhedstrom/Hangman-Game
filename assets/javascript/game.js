@@ -20,11 +20,12 @@ function newGame() {
 }
 
 function gameLoop(arr) {
+    document.getElementById("mobileInput").focus();
     let guessesLeft = 10;
     let usedArray = [];
     document.getElementById("guessesLeft").innerHTML = guessesLeft;
     document.getElementById("lettersUsed").innerHTML = usedArray;
-    let randomWord = arr[Math.floor(Math.random() * arr.length)];
+    let randomWord = arr[Math.floor(Math.random() * arr.length)]; //*********
     let lettersLeft = randomWord.length;
     let answerArray = [];
     for (let i = 0; i < randomWord.length; i++) {
