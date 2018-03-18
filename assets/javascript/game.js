@@ -1,14 +1,16 @@
-const randomWordArr1 = ["harmonica", "flute", "cello", "violin", "guitar", "bass", "piano", "organ", "ukulele", "trumpet", "viola", "clarinet", "harp", "banjo", "mandolin", "marimba"];
-const randomWordArr2 = ["kale", "carrot", "celery", "lettuce", "cabbage", "pea", "spinach", "broccoli", "radish", "cucumber", "tomato", "eggplant", "turnip", "squash", "pumpkin"];
-const randomWordArr3 = ["apple", "orange", "kiwi", "mango", "pineapple", "pear", "lemon", "banana", "peach", "cherry", "apricot", "watermelon", "strawberry", "blueberry", "grape"];
-const randomWordArr4 = ["sparrow", "woodpecker", "finch", "crow", "owl", "robin", "cardinal", "goldfinch", "pigeon", "hawk", "eagle", "hummingbird", "starling", "chickadee", "seagull"];
-const randomWordArr5 = ["rose", "dandelion", "daffodil", "crocus", "peony", "violet", "tulip", "orchid", "buttercup", "lavender", "poppy", "pansy", "marigold", "lilac"];
-const randomWordArr6 = ["jazz", "crypt", "blizzard", "equip", "galaxy", "zipper", "vortex", "subway", "whiskey", "wellspring", "kazoo", "luxury", "knapsack", "kiosk", "oxygen", "microwave", "quiz", "pixel", "fluff"];
+const instruments = ["harmonica", "flute", "cello", "violin", "guitar", "bass", "piano", "organ", "ukulele", "trumpet", "viola", "clarinet", "harp", "banjo", "mandolin", "marimba"];
+const vegetables = ["kale", "carrot", "celery", "lettuce", "cabbage", "pea", "spinach", "broccoli", "radish", "cucumber", "tomato", "eggplant", "turnip", "squash", "pumpkin"];
+const fruits = ["apple", "orange", "kiwi", "mango", "pineapple", "pear", "lemon", "banana", "peach", "cherry", "apricot", "watermelon", "strawberry", "blueberry", "grape"];
+const birds = ["sparrow", "woodpecker", "finch", "crow", "owl", "robin", "cardinal", "goldfinch", "pigeon", "hawk", "eagle", "hummingbird", "starling", "chickadee", "seagull"];
+const flowers = ["rose", "dandelion", "daffodil", "crocus", "peony", "violet", "tulip", "orchid", "buttercup", "lavender", "poppy", "pansy", "marigold", "lilac"];
+const hard = ["jazz", "crypt", "blizzard", "equip", "galaxy", "zipper", "vortex", "subway", "whiskey", "wellspring", "kazoo", "luxury", "knapsack", "kiosk", "oxygen", "microwave", "quiz", "pixel", "fluff"];
 let loss = 0;
 let win = 0;
+let topic;
 
 function showGame() {
     document.getElementById("gameElement").style.display = "block";
+    document.getElementById("buttons").style.display = "none";
     $("html,body").animate({
         scrollTop: document.body.scrollHeight
     }, "fast");
@@ -20,6 +22,8 @@ function newGame() {
 };
 
 function gameLoop(arr) {
+    let topics = topic;
+    document.getElementById("topicChoice").innerHTML = "<h4>" + topics + "</h4>";
     document.getElementById("mobileInput").focus();
     let guessesLeft = 10;
     let usedArray = [];
@@ -59,11 +63,15 @@ function gameLoop(arr) {
                 document.getElementById("guessesLeft").innerHTML = guessesLeft;
                 if (guessesLeft === 0) {
                     let restart = confirm("so close, and yet so far away...");
+                    document.getElementById("buttons").style.display = "block";
+                    document.getElementById("topicChoice").innerHTML = "";
                     loss++;
                     newGame();
                 };
                 if (lettersLeft === 0) {
                     alert("sweet! the word was " + randomWord);
+                    document.getElementById("buttons").style.display = "block";
+                    document.getElementById("topicChoice").innerHTML = "";
                     win++;
                     newGame();
                 };
@@ -76,26 +84,32 @@ function gameLoop(arr) {
     };
 };
 document.getElementById("instruments").onclick = function() {
+    topic = "instruments";
     showGame();
-    gameLoop(randomWordArr1);
+    gameLoop(instruments);
 };
 document.getElementById("vegetables").onclick = function() {
+    topic = "vegetables";
     showGame();
-    gameLoop(randomWordArr2);
+    gameLoop(vegetables);
 };
 document.getElementById("fruits").onclick = function() {
+    topic = "fruits";
     showGame();
-    gameLoop(randomWordArr3);
+    gameLoop(fruits);
 };
 document.getElementById("birds").onclick = function() {
+    topic = "birds";
     showGame();
-    gameLoop(randomWordArr4);
+    gameLoop(birds);
 };
 document.getElementById("flowers").onclick = function() {
+    topic = "flowers";
     showGame();
-    gameLoop(randomWordArr5);
+    gameLoop(flowers);
 };
 document.getElementById("hard").onclick = function() {
+    topic = "hard";
     showGame();
-    gameLoop(randomWordArr6);
+    gameLoop(hard);
 };
