@@ -4,6 +4,7 @@ const fruits = ["apple", "orange", "kiwi", "mango", "pineapple", "pear", "lemon"
 const birds = ["sparrow", "woodpecker", "finch", "crow", "owl", "robin", "cardinal", "goldfinch", "pigeon", "hawk", "eagle", "hummingbird", "starling", "chickadee", "seagull"];
 const flowers = ["rose", "dandelion", "daffodil", "crocus", "peony", "violet", "tulip", "orchid", "buttercup", "lavender", "poppy", "pansy", "marigold", "lilac"];
 const hard = ["jazz", "crypt", "blizzard", "equip", "galaxy", "zipper", "vortex", "subway", "whiskey", "wellspring", "kazoo", "luxury", "knapsack", "kiosk", "oxygen", "microwave", "quiz", "pixel", "fluff"];
+const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 let loss = 0;
 let win = 0;
 let topic;
@@ -44,8 +45,8 @@ function gameLoop(arr) {
             if (!used) {
                 usedArray.push(guess)
                 document.getElementById("lettersUsed").innerHTML = usedArray;
-                if (guess.length !== 1) {
-                    alert("one letter at a time, please.")
+                if (guess.length !== 1 || !alphabet.includes(guess)) {
+                    alert("nope, not a letter. try again.")
                 } else {
                     var match;
                     for (let j = 0; j < randomWord.length; j++) {
