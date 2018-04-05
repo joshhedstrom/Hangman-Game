@@ -41,7 +41,7 @@ function gameLoop(arr) {
         // document.onkeyup = function() {
 
             var str = '';
-            document.oninput = function(event) {
+            document.onkeyup = function(event) {
                 const currentCode = event.which || event.code;
                 let guess = event.key;
                 if (!guess) {
@@ -89,7 +89,7 @@ function gameLoop(arr) {
             } else {
                 alert("you already tried that letter");
             };
-        });
+        };
     };
 };
 document.getElementById("instruments").onclick = function() {
