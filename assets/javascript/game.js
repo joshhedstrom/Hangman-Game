@@ -41,8 +41,9 @@ function gameLoop(arr) {
         // document.onkeyup = function() {
 
             var str = '';
-            document.onkeyup = function(event) {
+            document.onkeypress = function(event) {
                 const currentCode = event.which || event.code;
+                console.log(event.which)
                 let guess = event.key;
                 if (!guess) {
                     guess = String.fromCharCode(currentCode);
