@@ -19,7 +19,6 @@ function showGame() {
 
 function newGame() {
     document.getElementById("gameElement").style.display = "none";
-
 };
 
 function gameLoop(arr) {
@@ -39,8 +38,25 @@ function gameLoop(arr) {
     document.getElementById("word").innerHTML = answerArray.join(" ");
     console.log(randomWord)
     if (lettersLeft > 0) {
-        document.onkeyup = function() {
-            var guess = event.key;
+        // document.onkeyup = function() {
+
+
+            var str = '';
+            // var el = document.getElementById('#test');
+            document.addEventListener('keypress', function(event) {
+                const currentCode = event.which || event.code;
+                let guess = event.key;
+                if (!guess) {
+                    guess = String.fromCharCode(currentCode);
+                }
+                str += guess;
+                event.preventDefault();
+                // el.innerHTML = str;
+            // })
+
+
+
+            // var guess = event.key;
             var used = usedArray.includes(guess);
             if (!used) {
                 usedArray.push(guess)
@@ -81,7 +97,7 @@ function gameLoop(arr) {
             } else {
                 alert("you already tried that letter");
             };
-        };
+        });
     };
 };
 document.getElementById("instruments").onclick = function() {
