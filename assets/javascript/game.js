@@ -41,7 +41,7 @@ function gameLoop(arr) {
         // document.onkeyup = function() {
 
             var str = '';
-            document.onkeydown = function(event) {
+            document.oninput = function(event) {
                 const currentCode = event.which || event.code;
                 let guess = event.key;
                 if (!guess) {
