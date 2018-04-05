@@ -21,43 +21,50 @@ function newGame() {
     document.getElementById("gameElement").style.display = "none";
 };
 
+function reset() {
+    document.getElementById("buttons").style.display = "block";
+    document.getElementById("topicChoice").innerHTML = "";
+    newGame();
+}
+
 function gameLoop(arr) {
+    showGame();
     let topics = topic;
-    document.getElementById("topicChoice").innerHTML = "<h4>" + topics + "</h4>";
-    document.getElementById("mobileInput").focus();
     let guessesLeft = 10;
     let usedArray = [];
-    document.getElementById("guessesLeft").innerHTML = guessesLeft;
-    document.getElementById("lettersUsed").innerHTML = usedArray;
     let randomWord = arr[Math.floor(Math.random() * arr.length)];
     let lettersLeft = randomWord.length;
     let answerArray = [];
+
+    // document.getElementById("mobileInput").focus();
+    document.getElementById("topicChoice").innerHTML = "<h4>" + topics + "</h4>";
+    document.getElementById("guessesLeft").innerHTML = guessesLeft;
+    document.getElementById("lettersUsed").innerHTML = usedArray;
+    
     for (let i = 0; i < randomWord.length; i++) {
         answerArray[i] = " _ ";
     };
     document.getElementById("word").innerHTML = answerArray.join(" ");
     console.log(randomWord)
     if (lettersLeft > 0) {
-        // document.onkeyup = function() {
-
-            var str = '';
-            document.onkeypress = function(event) {
-                const currentCode = event.which || event.code;
-                console.log(event.which)
-                let guess = event.key;
-                if (!guess) {
-                    guess = String.fromCharCode(currentCode);
-                }
-                str += guess;
-                event.preventDefault();
-            var used = usedArray.includes(guess);
+        let codeStr = '';
+        document.onkeyup = function(event) {
+            const currentCode = event.which || event.code;
+            // console.log(event.which)
+            let guess = event.key;
+            if (!guess) {
+                guess = String.fromCharCode(currentCode);
+            }
+            codeStr += guess;
+            event.preventDefault();
+            let used = usedArray.includes(guess);
             if (!used) {
                 usedArray.push(guess)
                 document.getElementById("lettersUsed").innerHTML = usedArray;
                 if (guess.length !== 1 || !alphabet.includes(guess)) {
                     alert("nope, not a letter. try again.")
                 } else {
-                    var match;
+                    let match;
                     for (let j = 0; j < randomWord.length; j++) {
                         if (randomWord[j] === guess) {
                             answerArray[j] = guess;
@@ -73,53 +80,42 @@ function gameLoop(arr) {
                 document.getElementById("guessesLeft").innerHTML = guessesLeft;
                 if (guessesLeft === 0) {
                     let restart = confirm("so close, and yet so far away...");
-                    document.getElementById("buttons").style.display = "block";
-                    document.getElementById("topicChoice").innerHTML = "";
                     loss++;
-                    newGame();
+                    reset();
                 };
                 if (lettersLeft === 0) {
                     alert("sweet! the word was " + randomWord);
-                    document.getElementById("buttons").style.display = "block";
-                    document.getElementById("topicChoice").innerHTML = "";
                     win++;
-                    newGame();
+                    reset();
                 };
-                document.getElementById("win").innerHTML = "wins: " + win;
-                document.getElementById("loss").innerHTML = "losses: " + loss;
             } else {
                 alert("you already tried that letter");
             };
         };
     };
 };
+
 document.getElementById("instruments").onclick = function() {
     topic = "instruments";
-    showGame();
     gameLoop(instruments);
 };
 document.getElementById("vegetables").onclick = function() {
     topic = "vegetables";
-    showGame();
     gameLoop(vegetables);
 };
 document.getElementById("fruits").onclick = function() {
     topic = "fruits";
-    showGame();
     gameLoop(fruits);
 };
 document.getElementById("birds").onclick = function() {
     topic = "birds";
-    showGame();
     gameLoop(birds);
 };
 document.getElementById("flowers").onclick = function() {
     topic = "flowers";
-    showGame();
     gameLoop(flowers);
 };
 document.getElementById("hard").onclick = function() {
     topic = "hard";
-    showGame();
     gameLoop(hard);
 };
