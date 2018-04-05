@@ -40,10 +40,8 @@ function gameLoop(arr) {
     if (lettersLeft > 0) {
         // document.onkeyup = function() {
 
-
             var str = '';
-            // var el = document.getElementById('#test');
-            document.addEventListener('keypress', function(event) {
+            document.onkeypress = function(event) {
                 const currentCode = event.which || event.code;
                 let guess = event.key;
                 if (!guess) {
@@ -51,12 +49,6 @@ function gameLoop(arr) {
                 }
                 str += guess;
                 event.preventDefault();
-                // el.innerHTML = str;
-            // })
-
-
-
-            // var guess = event.key;
             var used = usedArray.includes(guess);
             if (!used) {
                 usedArray.push(guess)
