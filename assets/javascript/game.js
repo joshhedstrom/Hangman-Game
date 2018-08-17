@@ -167,7 +167,7 @@ const gameLoop = arr => {
   let lettersLeft = randomWord.length;
   let answerArray = [];
 
-  document.getElementById('topicChoice').innerHTML = '<h4>' + topics + '</h4>';
+  document.getElementById('topicChoice').innerHTML = `<h4>'${topics}</h4>`;
   document.getElementById('guessesLeft').innerHTML = guessesLeft;
   document.getElementById('lettersUsed').innerHTML = usedArray;
   for (let i = 0; i < randomWord.length; i++) {
@@ -187,7 +187,7 @@ const gameLoop = arr => {
       event.preventDefault();
       let used = usedArray.includes(guess);
       if (!used) {
-        usedArray.push(guess);
+        usedArray.push(` ${guess}`);
         document.getElementById('lettersUsed').innerHTML = usedArray;
         if (guess.length !== 1 || !alphabet.includes(guess)) {
           document.getElementById('message').innerHTML =
