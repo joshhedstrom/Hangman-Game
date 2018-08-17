@@ -1,79 +1,82 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<title>hangman</title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- https://bootswatch.com/slate/ -->
-		<link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.min.css">
-		<script
-		src="https://code.jquery.com/jquery-3.3.1.min.js"
-		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-		crossorigin="anonymous"></script>
-	</head>
-	<body class="container col-12 col-sm-12 col-md-12" style="background-image: url(./assets/images/hangman3.jpg); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
-		<div class="col-12 col-sm-12 col-md-12">
-			<div class="jumbotron" style="opacity: 0.7">
-				<h1 class="display-4 text-white"><strong>ready to play hangman?</strong></h1><br>
-				<p class="lead text-white"><strong>a hangman-ish game. pick a topic to start</strong></p>
-				<hr class="my-4">
-			</div>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>hangman</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- https://bootswatch.com/slate/ -->
+	<link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous"></script>
+</head>
+
+<body class="container col-12 col-sm-12 col-md-12" style="background-image: url(./assets/images/hangman3.jpg); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
+	<div class="col-12 col-sm-12 col-md-12">
+		<div class="jumbotron" style="opacity: 0.7">
+			<h1 class="display-4 text-white">
+				<strong>ready to play hangman?</strong>
+			</h1>
+			<br>
+			<p class="lead text-white">
+				<strong>a hangman-ish game. pick a topic to start</strong>
+			</p>
+			<hr class="my-4">
 		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="card-header text-white lead pull-left col-3 col-sm-3 col-md-2" style="opacity: 0.7">
+			<p id="win">wins:</p>
+		</div>
+		<div class="col-6 col-sm-6 col-md-6"></div>
+		<div class="card-header text-white lead pull-right col-3 col-sm-3 col-md-2" style="opacity: 0.7">
+			<p id="loss">losses:</p>
+		</div>
+	</div>
+	<div class="text-center" id="topicChoice"></div>
+	<div id="buttons">
+		<div class="row text-center">
+			<a class="btn btn-primary btn-lg col-4 col-sm-4 col-md-3 pull-left" id="instruments" role="button">instruments</a>
+			<a class="btn btn-primary btn-lg col-4 col-sm-4 col-md-3 mx-auto" id="vegetables" role="button">vegetables</a>
+			<a class="btn btn-primary btn-lg col-4 col-sm-4 col-md-3 pull-right" id="fruits" role="button">fruits</a>
+		</div>
+		<div class="row text-center">
+			<a class="btn btn-primary btn-lg col-4 col-sm-4 col-md-3 pull-left" id="birds" role="button">birds</a>
+			<a class="btn btn-primary btn-lg col-4 col-sm-4 col-md-3 mx-auto" id="flowers" role="button">flowers</a>
+			<a class="btn btn-primary btn-lg col-4 col-sm-4 col-md-3 pull-right" id="hard" role="button">hard words</a>
+		</div>
+	</div>
+	<div id="gameElement" class="align-items-center center-block" style="display: none ;">
 		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="card-header text-white lead pull-left col-3 col-sm-3 col-md-2" style="opacity: 0.7">
-				<p id="win">wins:</p>
-			</div>
-			<div class="col-6 col-sm-6 col-md-6"></div>
-			<div class="card-header text-white lead pull-right col-3 col-sm-3 col-md-2" style="opacity: 0.7">
-				<p id="loss">losses:</p>
-			</div>
-		</div>
-		<div class="text-center" id="topicChoice"></div>
-		<div id="buttons">
-			<div class="row text-center">
-				<a class="btn btn-primary btn-lg col-4 col-sm-4 col-md-3 pull-left" id="instruments" role="button">instruments</a>
-				<a class="btn btn-primary btn-lg col-4 col-sm-4 col-md-3 mx-auto" id="vegetables" role="button">vegetables</a>
-				<a class="btn btn-primary btn-lg col-4 col-sm-4 col-md-3 pull-right" id="fruits" role="button">fruits</a>
-			</div>
-			<div class="row text-center">
-				<a class="btn btn-primary btn-lg col-4 col-sm-4 col-md-3 pull-left" id="birds" role="button">birds</a>
-				<a class="btn btn-primary btn-lg col-4 col-sm-4 col-md-3 mx-auto" id="flowers" role="button">flowers</a>
-				<a class="btn btn-primary btn-lg col-4 col-sm-4 col-md-3 pull-right" id="hard" role="button">hard words</a>
-			</div>
-		</div>
-		<div id="gameElement" class="align-items-center center-block" style="display: none ;">
-			<div class="row">
-				<div class="container col-12 col-sm-12 col-md-6 mx-auto">
-					<br>
-					<div class="card text-white bg-primary mb-3" style="opacity: 0.7">
-						<div class="card-header text-center">the word</div>
-						<div class="card-body">
-							<p class="card-text text-center" id="word"></p>
-						</div>
+			<div class="container col-12 col-sm-12 col-md-6 mx-auto">
+				<br>
+				<div class="card text-white bg-primary mb-3" style="opacity: 0.7">
+					<div class="card-header text-center">the word</div>
+					<div class="card-body">
+						<p class="card-text text-center" id="word"></p>
 					</div>
-					<br>
-					<div class="card text-white bg-primary mb-3" style="opacity: 0.7">
-						<div class="card-header text-center">letters used</div>
-						<div class="card-body">
-							<p class="card-text text-center" id="lettersUsed"></p>
-						</div>
+				</div>
+				<br>
+				<div class="card text-white bg-primary mb-3" style="opacity: 0.7">
+					<div class="card-header text-center">letters used</div>
+					<div class="card-body">
+						<p class="card-text text-center" id="lettersUsed"></p>
 					</div>
-					<br>
-					<div class="card text-white bg-primary mb-3" style="opacity: 0.7">
-						<div class="card-header text-center">guesses left</div>
-						<div class="card-body">
-							<p class="card-text  text-center" id="guessesLeft"></p>
-						</div>
-					</div>
-					<div class="" style="opacity: 0">
-						<input type="text" class="form-control" placeholder="Default input" id="mobileInput">
+				</div>
+				<br>
+				<div class="card text-white bg-primary mb-3" style="opacity: 0.7">
+					<div class="card-header text-center">guesses left</div>
+					<div class="card-body">
+						<p class="card-text  text-center" id="guessesLeft"></p>
 					</div>
 				</div>
 			</div>
 		</div>
-		<script src="./assets/javascript/game.js"></script>
-	</body>
+	</div>
+	<script src="./assets/javascript/game.js"></script>
+</body>
+
 </html>
