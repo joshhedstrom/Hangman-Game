@@ -136,7 +136,7 @@ let loss = 0;
 let win = 0;
 let topic;
 
-function showGame() {
+const showGame = () => {
   document.getElementById('gameElement').style.display = 'block';
   document.getElementById('buttons').style.display = 'none';
   $('html,body').animate(
@@ -147,17 +147,17 @@ function showGame() {
   );
 }
 
-function newGame() {
+const newGame = () => {
   document.getElementById('gameElement').style.display = 'none';
 }
 
-function reset() {
+const reset = () => {
   document.getElementById('buttons').style.display = 'block';
   document.getElementById('topicChoice').innerHTML = '';
   newGame();
 }
 
-function gameLoop(arr) {
+const gameLoop = arr => {
   showGame();
   let topics = topic;
   let guessesLeft = 10;
@@ -166,7 +166,6 @@ function gameLoop(arr) {
   let lettersLeft = randomWord.length;
   let answerArray = [];
 
-  // document.getElementById("mobileInput").focus();
   document.getElementById('topicChoice').innerHTML = '<h4>' + topics + '</h4>';
   document.getElementById('guessesLeft').innerHTML = guessesLeft;
   document.getElementById('lettersUsed').innerHTML = usedArray;
@@ -178,9 +177,8 @@ function gameLoop(arr) {
   console.log(randomWord);
   if (lettersLeft > 0) {
     let codeStr = '';
-    document.onkeyup = function(event) {
+    document.onkeyup = event => {
       const currentCode = event.which || event.code;
-      // console.log(event.which)
       let guess = event.key;
       if (!guess) {
         guess = String.fromCharCode(currentCode);
@@ -225,27 +223,27 @@ function gameLoop(arr) {
   }
 }
 
-document.getElementById('instruments').onclick = function() {
+document.getElementById('instruments').onclick = () => {
   topic = 'instruments';
   gameLoop(instruments);
 };
-document.getElementById('vegetables').onclick = function() {
+document.getElementById('vegetables').onclick = () => {
   topic = 'vegetables';
   gameLoop(vegetables);
 };
-document.getElementById('fruits').onclick = function() {
+document.getElementById('fruits').onclick = () => {
   topic = 'fruits';
   gameLoop(fruits);
 };
-document.getElementById('birds').onclick = function() {
+document.getElementById('birds').onclick = () => {
   topic = 'birds';
   gameLoop(birds);
 };
-document.getElementById('flowers').onclick = function() {
+document.getElementById('flowers').onclick = () => {
   topic = 'flowers';
   gameLoop(flowers);
 };
-document.getElementById('hard').onclick = function() {
+document.getElementById('hard').onclick = () => {
   topic = 'hard';
   gameLoop(hard);
 };
