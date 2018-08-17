@@ -145,20 +145,21 @@ const showGame = () => {
     },
     'fast'
   );
-}
+};
 
 const newGame = () => {
   document.getElementById('gameElement').style.display = 'none';
-}
+};
 
 const reset = () => {
   document.getElementById('buttons').style.display = 'block';
   document.getElementById('topicChoice').innerHTML = '';
   newGame();
-}
+};
 
 const gameLoop = arr => {
   showGame();
+  document.getElementById('message').innerHTML = '';
   let topics = topic;
   let guessesLeft = 10;
   let usedArray = [];
@@ -169,12 +170,11 @@ const gameLoop = arr => {
   document.getElementById('topicChoice').innerHTML = '<h4>' + topics + '</h4>';
   document.getElementById('guessesLeft').innerHTML = guessesLeft;
   document.getElementById('lettersUsed').innerHTML = usedArray;
-
   for (let i = 0; i < randomWord.length; i++) {
     answerArray[i] = ' _ ';
   }
   document.getElementById('word').innerHTML = answerArray.join(' ');
-  console.log(randomWord);
+  //   console.log(randomWord);
   if (lettersLeft > 0) {
     let codeStr = '';
     document.onkeyup = event => {
@@ -190,9 +190,11 @@ const gameLoop = arr => {
         usedArray.push(guess);
         document.getElementById('lettersUsed').innerHTML = usedArray;
         if (guess.length !== 1 || !alphabet.includes(guess)) {
-          alert('nope, not a letter. try again.');
+          document.getElementById('message').innerHTML =
+            'nope, not a letter. try again.';
         } else {
           let match;
+
           for (let j = 0; j < randomWord.length; j++) {
             if (randomWord[j] === guess) {
               answerArray[j] = guess;
@@ -201,27 +203,30 @@ const gameLoop = arr => {
               match = true;
             }
           }
-          if (!match) {
-            guessesLeft--;
-          }
+
+          if (!match) guessesLeft--;
         }
         document.getElementById('guessesLeft').innerHTML = guessesLeft;
         if (guessesLeft === 0) {
-          let restart = confirm('so close, and yet so far away...');
+          document.getElementById('message').innerHTML =
+            'so close, and yet so far away...';
           loss++;
           reset();
         }
         if (lettersLeft === 0) {
-          alert('sweet! the word was ' + randomWord);
+          document.getElementById(
+            'message'
+          ).innerHTML = `sweet! the word was ${randomWord}`;
           win++;
           reset();
         }
       } else {
-        alert('you already tried that letter');
+        document.getElementById('message').innerHTML =
+          'you already tried that letter';
       }
     };
   }
-}
+};
 
 document.getElementById('instruments').onclick = () => {
   topic = 'instruments';
